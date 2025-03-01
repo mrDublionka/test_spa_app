@@ -1,0 +1,45 @@
+@import "constants";
+
+:root {
+  //SIZES
+  //--max-page-width: 1440px;
+  --main-padding-margin: 120px;
+  --right-side: 352px;
+  --header-height: 64px;
+  //--header-top-height: 48px;
+  //--header-bot-height: 56px;
+  //--containers-margin: 96px;
+  //--dir-btn-sizes: 56px;
+  //--top-bottom-main_elems-padding: 56px;
+  //--right-columns-height: calc(100vh - 88px);
+  //--standart-column-width: 544px;
+
+  //COLORS
+
+  --green: #018D31;
+  --blinded-green: #E0E0E0;
+  --orange: #E76101;
+  --blinded-orange: #FFF6CE;
+  --blue: #0465AC;
+  --blinded-blue: #A2D7E7;
+  --dark-purple-gray: #46454A;
+  --light-purple-gray: #D2CDEA;
+
+  @media (max-width: $breakpoint1) {
+    --main-padding-margin: 60px;
+  }
+
+  @media (max-width: $breakpoint2) {
+    --main-padding-margin: 32px;
+  }
+
+  @media (max-width: $breakpoint3) {
+    --main-padding-margin: 16px;
+  }
+
+  @media (max-width: $breakpoint4) {
+    --main-padding-margin: 8px;
+  }
+
+}
+

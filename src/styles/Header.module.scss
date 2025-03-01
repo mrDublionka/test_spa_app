@@ -1,0 +1,17 @@
+@import "mixins";
+
+.header {
+  height: var(--header-height);
+  border-bottom: 1px solid var(--light-purple-gray);
+  width: 100%;
+  @include flexRow;
+
+  &__left {
+    flex: 1;
+  }
+
+  &__right {
+    //backdrop-filter: var(--gr);
+    width: var(--right-side);
+  }
+}
