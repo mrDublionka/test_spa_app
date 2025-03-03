@@ -2,16 +2,25 @@
 
 .header {
   height: var(--header-height);
-  border-bottom: 1px solid var(--light-purple-gray);
   width: 100%;
   @include flexRow;
 
   &__left {
     flex: 1;
+    border-bottom: 1px solid var(--light-gray);
+
+    @include toCenter;
   }
 
   &__right {
-    //backdrop-filter: var(--gr);
+    background: var(--light-gray);
     width: var(--right-side);
+    border-bottom: 1px solid var(--light-gray1);
+    @include toCenter;
+  }
+
+  &__side_label {
+    font-weight: 600;
+    @include font-24px
   }
 }

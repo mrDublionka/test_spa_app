@@ -1,0 +1,129 @@
+@import "mixins";
+
+
+.main_body {
+  height: var(--header-height);
+  width: 100%;
+  flex: 1;
+  background: var(--white);
+  @include flexRow;
+
+  &__left {
+    flex: 1;
+    max-height: 100%;
+
+  }
+
+  &__grid {
+    padding: 0 var(--main-padding-margin);
+    max-width: 1200px;
+    margin: 24px auto;
+    @include regularGridResponsive(260px, 24px);
+
+    .grid_item {
+      border-radius: 16px;
+      //border: 1px solid #F00;
+      align-items: center;
+      padding: 32px;
+      gap: 24px;
+      outline: none;
+      border: 2px solid transparent;
+      cursor: pointer;
+      @include transitions;
+      @include flexColumn;
+
+      svg {
+        width: 224px;
+        height: 224px;
+        aspect-ratio: 1/1;
+        max-width: 100%;
+      }
+
+      .inf {
+        text-align: center;
+        gap: 12px;
+        @include flexColumn;
+
+
+        h3 {
+          @include font-24px;
+        }
+
+        span {
+          @include font-20px;
+        }
+      }
+
+
+      &.sunny_orange {
+        color: var(--orange);
+        background: var(--blinded-orange);
+
+        &:hover {
+          background: var(--blinded-orange-hover);
+          color: var(--orange-hover);
+        }
+
+        &:focus-visible {
+          border: 2px solid var(--orange) !important;
+        }
+      }
+
+      &.deep_blue {
+        color: var(--blue);
+        background: var(--blinded-blue);
+
+        &:hover {
+          background: var(--blinded-blue-hover);
+          color: var(--blue-hover);
+        }
+
+        &:focus-visible {
+          border-color: var(--blue);
+        }
+
+      }
+
+      &.floral_green {
+        color: var(--green);
+        background: var(--blinded-green);
+
+        &:hover {
+          background: var(--blinded-green-hover);
+          color: var(--green-hover);
+        }
+
+        &:focus-visible {
+          border-color: var(--green-hover);
+        }
+      }
+
+      &.interstellar_gray {
+        background: var(--interstellar-gray);
+        color: var(--white);
+
+        &.hover {
+          background: var(--interstellar-gray-hover);
+        }
+
+        &:focus-visible {
+          border-color: var(--interstellar-gray-border);
+        }
+
+        svg {
+          color: var(--light-purple-gray);
+        }
+      }
+
+    }
+  }
+
+  &__right {
+    background: var(--light-gray);
+    width: var(--right-side);
+  }
+
+  &__sides {
+    overflow-y: scroll;
+  }
+}

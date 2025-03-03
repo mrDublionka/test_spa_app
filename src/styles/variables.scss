@@ -15,15 +15,34 @@
   //--standart-column-width: 544px;
 
   //COLORS
-
+  --white: #fff;
   --green: #018D31;
-  --blinded-green: #E0E0E0;
+  --green-hover: #006F26;
+  --blinded-green: #ADEDB3;
+  --blinded-green-hover: #8FFB99;
   --orange: #E76101;
+  --orange-hover: #C85400;
   --blinded-orange: #FFF6CE;
+  --blinded-orange-hover: #FFF0B9;
+  --light-blue:#0080F6;
+  --light-blue-hover: #0063BE;
   --blue: #0465AC;
+  --blue-hover: #065188;
   --blinded-blue: #A2D7E7;
-  --dark-purple-gray: #46454A;
+  --blinded-blue-hover: #92D8FF;
+  --interstellar-gray: #46454A;
+  --gray-text-color: #909090;
+  --interstellar-gray-hover: #3F3664;
+  --interstellar-gray-border: #37006D;
   --light-purple-gray: #D2CDEA;
+  --light-gray: #F8F8F8;
+  --light-gray2: #f7f7f7;
+  --light-gray-hover: #EEEEEE;
+  --light-gray-hover1: #FDFDFD;
+  --light-gray1: #EDEDED;
+
+  --light-gray-text-color:#9D9D9D;
+
 
   @media (max-width: $breakpoint1) {
     --main-padding-margin: 60px;

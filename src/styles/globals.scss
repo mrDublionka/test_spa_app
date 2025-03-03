@@ -32,11 +32,17 @@
 html,
 body {
   max-width: 100vw;
+  height: 100vh;
 }
 
 body {
-  background: #fff;
-  font-family: "Inter", sans-serif !important;
+  background: var(--white);
+  font-family: "Roboto", sans-serif !important;
+}
+
+main {
+  height: 100%;
+  @include flexColumn;
 }
 
 input::-ms-reveal,
@@ -168,7 +174,7 @@ iframe {
 
 .amplify-alert {
   background: var(--cta-yellow);
-  color: #fff;
+  color: var(--white);
   border-radius: 8px;
   padding: 8px;
 
@@ -219,7 +225,7 @@ iframe {
 
 .amplify-alert .amplify-liveness-popover button  {
   border: none;
-  color: #fff;
+  color: var(--white);
   background: none;
   cursor: pointer;
 
@@ -279,7 +285,7 @@ iframe {
 }
 
 .amplify-liveness-toast__message {
-  color: #fff !important;
+  color: var(--white) !important;
 
   div {
     font-size: 20px;
@@ -363,7 +369,7 @@ iframe {
 }
 
 .schedule_table tr:nth-child(odd) {
-  background-color: #fff;
+  background-color: var(--white);
 }
 
 .schedule_table th td {
