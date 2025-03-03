@@ -6,10 +6,12 @@ import { strings } from "@/utils/constants.tsx";
 import Button from "@/components/ui/Button.tsx";
 import clsx from "clsx";
 
-// ✅ Define validation schema
 const schema = yup.object().shape({
     name: yup.string().required("Name is required"),
-    tel: yup.string().matches(/^\+?\d{7,15}$/, "Invalid phone number").required("Phone number is required"),
+    tel: yup
+        .string()
+        .matches(/^\+?\d{7,15}$/, "Invalid phone number")
+        .required("Phone number is required"),
     email: yup.string().email("Invalid email").required("Email is required"),
     message: yup.string().required("Message cannot be empty"),
 });
@@ -18,14 +20,21 @@ const FeedbackForm = () => {
     const {
         register,
         handleSubmit,
+        trigger,
         formState: { errors, isValid },
     } = useForm({
         resolver: yupResolver(schema),
         mode: "onChange",
+        reValidateMode: "onSubmit",
     });
 
-    const onSubmit = (data: any) => {
-        console.log("Form submitted:", data);
+    const onSubmit = async (data: any) => {
+        const isValidTel = await trigger("tel");
+        const isValidEmail = await trigger("email");
+
+        if (isValidTel && isValidEmail) {
+            console.log("Form submitted:", data);
+        }
     };
 
     return (
