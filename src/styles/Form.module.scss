@@ -1,22 +1,22 @@
-@import "constants";
-@import "mixins";
+//@use "constants";
+@use "mixins";
 
 .form {
   padding: 24px;
   gap: 28px;
   width: 100%;
-  @include flexColumn;
+  @include mixins.flexColumn;
 
   &__item {
     background: var(--white);
     padding: 16px;
     border-radius: 16px;
     gap: 8px;
-    @include flexColumn;
+    @include mixins.flexColumn;
 
     label {
       color: var(--light-gray-text-color);
-      @include font-16px;
+      @include mixins.font-16px;
 
     }
 
@@ -29,7 +29,7 @@
 
     .error {
       color: var(--danger);
-      @include font-12px;
+      @include mixins.font-12px;
     }
 
     input, textarea {
@@ -39,7 +39,7 @@
       stroke: none;
       resize: vertical;
       padding-bottom: 2px;
-      @include font-20px;
+      @include mixins.font-20px;
 
       &:focus-visible, &:focus {
         border-bottom: 1px solid var(--interstellar-gray);

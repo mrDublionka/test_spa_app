@@ -1,5 +1,5 @@
-@import "constants";
-@import "mixins";
+@use "constants";
+@use "mixins";
 @import url('../assets/fonts/fonts.scss');
 
 * {
@@ -12,7 +12,7 @@
   &::-webkit-scrollbar {
     width: 9px;
     background: transparent;
-    @include transitions;
+    @include mixins.transitions;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -20,12 +20,12 @@
     border-radius: 10px;
     border: 2px solid transparent;
     background-clip: content-box;
-    @include transitions;
+    @include mixins.transitions;
   }
 
   &::-webkit-scrollbar-track {
     background: transparent;
-    @include transitions;
+    @include mixins.transitions;
   }
 }
 
@@ -42,7 +42,7 @@ body {
 
 main {
   height: 100%;
-  @include flexColumn;
+  @include mixins.flexColumn;
 }
 
 input::-ms-reveal,
@@ -95,7 +95,7 @@ button {
     margin: 0;
   }
 
-  @media (max-width: $breakpoint2) {
+  @media (max-width: constants.$breakpoint2) {
     margin: var(--header-bot-height) auto 0;
   }
 }
@@ -126,7 +126,7 @@ button {
     border-radius: 100px;
     cursor: pointer;
 
-    @include transitions;
+    @include mixins.transitions;
 
     &.swiper-pagination-bullet-active {
       width: 24px;
@@ -134,7 +134,7 @@ button {
     }
   }
 
-  @media (max-width: $breakpoint3) {
+  @media (max-width:constants.$breakpoint3) {
     .swiper-pagination {
       display: flex;
     }
@@ -167,7 +167,7 @@ iframe {
 }
 
 .liveness-detector-check {
-  @media (max-width: $breakpoint3) {
+  @media (max-width:constants.$breakpoint3) {
     gap: 16px !important;
   }
 }
@@ -182,7 +182,7 @@ iframe {
     font-size: 24px;
   }
 
-  @media (max-width: $breakpoint3) {
+  @media (max-width:constants.$breakpoint3) {
     .amplify-alert__heading {
       font-size: 14px;
       line-height: 110%;
@@ -202,7 +202,7 @@ iframe {
 }
 
 .amplify-flex {
-  @media (max-width: $breakpoint5) {
+  @media (max-width:constants.$breakpoint5) {
     gap: 6px !important;
   }
 }
@@ -256,7 +256,7 @@ iframe {
   border: none !important;
   stroke: none !important;
   box-shadow: none !important;
-  @include tapOrHovered;
+  @include mixins.tapOrHovered;
 
 }
 
@@ -269,7 +269,7 @@ iframe {
   overflow: hidden;
   //max-height: 400px;
 
-  @media (max-width: $breakpoint5) {
+  @media (max-width: constants.$breakpoint5) {
     max-height: calc(100vh - 150px);
   }
 }
@@ -319,7 +319,7 @@ iframe {
   border-radius: 100px;
   cursor: pointer;
 
-  @include transitions;
+  @include mixins.transitions;
 
   &.swiper-pagination-bullet-active {
     width: 24px;
@@ -382,7 +382,7 @@ iframe {
   color: white;
 }
 
-@media (max-width: $breakpoint3) {
+@media (max-width: constants.$breakpoint3) {
   .swiper-pagination {
     display: flex;
 

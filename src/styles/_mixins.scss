@@ -1,3 +1,5 @@
+@use 'constants';
+
 @mixin flexRow {
   display: flex;
   flex-direction: row;
@@ -18,7 +20,7 @@
     filter: brightness(0.90);
   }
 
-  @media (max-width: $breakpoint2) {
+  @media (max-width: constants.$breakpoint2) {
     &:hover {
       filter: none;
     }
@@ -34,7 +36,7 @@
     background: $color;
   }
 
-  @media (max-width: $breakpoint2) {
+  @media (max-width: constants.$breakpoint2) {
     &:hover {
       background: initial;
     }
@@ -129,7 +131,7 @@
   @include standartOl;
   @include standartUl;
 
-  @media (max-width: $breakpoint3){
+  @media (max-width:constants.$breakpoint3){
     p {
       font-size: 14px;
     }
@@ -154,7 +156,7 @@
     background: rgba(71, 79, 70, 0.35);
     color: var(--white);
 
-    @media(max-width: $breakpoint2) {
+    @media(max-width: constants.$breakpoint2) {
       right: 0;
       top: -50px;
     }

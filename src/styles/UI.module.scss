@@ -1,4 +1,4 @@
-@import "mixins";
+@use "mixins";
 
 
 .standart_button {
@@ -17,7 +17,7 @@
   cursor: pointer;
   outline: none;
   color: var(--light-blue);
-  @include transitions;
+  @include mixins.transitions;
 
   &:active {
     transform: scale(0.95);
@@ -28,12 +28,12 @@
   }
 
   &.secondary  {
-    @include secondaryBtn;
+    @include mixins.secondaryBtn;
   }
 
   &.primary {
 
-    @include primaryBtn;
+    @include mixins.primaryBtn;
   }
 
 }

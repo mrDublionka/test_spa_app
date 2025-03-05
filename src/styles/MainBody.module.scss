@@ -1,5 +1,5 @@
-@import "mixins";
-@import "constants";
+@use "mixins";
+@use "constants";
 
 
 .main_body {
@@ -7,7 +7,7 @@
   width: 100%;
   flex: 1;
   background: var(--white);
-  @include flexRow;
+  @include mixins.flexRow;
 
   &__left {
     flex: 1;
@@ -21,7 +21,7 @@
     max-width: 100%;
     height: fit-content;
     margin: 24px auto;
-    @include regularGridResponsive(260px, 24px);
+    @include mixins.regularGridResponsive(260px, 24px);
 
     .grid_item {
       border-radius: 16px;
@@ -32,8 +32,8 @@
       outline: none;
       border: 2px solid transparent;
       cursor: pointer;
-      @include transitions;
-      @include flexColumn;
+      @include mixins.transitions;
+      @include mixins.flexColumn;
 
       svg {
         width: 224px;
@@ -45,15 +45,15 @@
       .inf {
         text-align: center;
         gap: 12px;
-        @include flexColumn;
+        @include mixins.flexColumn;
 
 
         h3 {
-          @include font-24px;
+          @include mixins.font-24px;
         }
 
         span {
-          @include font-20px;
+          @include mixins.font-20px;
         }
       }
 
@@ -131,7 +131,7 @@
   }
 
 
-  @media (max-width: $breakpoint3) {
+  @media (max-width: constants.$breakpoint3) {
 
     &__right {
       width: 100%;

@@ -1,11 +1,11 @@
-@import "mixins";
-@import "constants";
+@use "mixins";
+@use "constants";
 
 .header {
   height: var(--header-height);
   width: 100%;
   position: relative;
-  @include flexRow;
+  @include mixins.flexRow;
 
   &.mobile {
     display: none;
@@ -15,22 +15,22 @@
     flex: 1;
     border-bottom: 1px solid var(--light-gray);
 
-    @include toCenter;
+    @include mixins.toCenter;
   }
 
   &__right {
     background: var(--light-gray);
     width: var(--right-side);
     border-bottom: 1px solid var(--light-gray1);
-    @include toCenter;
+    @include mixins.toCenter;
   }
 
   &__side_label {
     font-weight: 600;
-    @include font-24px
+    @include mixins.font-24px
   }
   
-  @media (max-width: $breakpoint3) {
+  @media (max-width: constants.$breakpoint3) {
     border-bottom: 1px solid var(--light-gray);
 
     &:before {
@@ -94,7 +94,7 @@
       z-index: 1;
       background: var(--light-gray);
       border-radius: 16px;
-      @include transitions;
+      @include mixins.transitions;
       //line-height: 100px;
 
       &:not(.active) {
