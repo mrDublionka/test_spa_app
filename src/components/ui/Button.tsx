@@ -1,5 +1,5 @@
 import React, {ReactNode} from "react";
-import styles from "@/styles/Ui.module.scss"
+import styles from "@/styles/UI.module.scss"
 import clsx from "clsx";
 
 
