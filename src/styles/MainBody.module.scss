@@ -1,4 +1,5 @@
 @import "mixins";
+@import "constants";
 
 
 .main_body {
@@ -16,7 +17,9 @@
 
   &__grid {
     padding: 0 var(--main-padding-margin);
-    max-width: 1200px;
+    width: 1200px;
+    max-width: 100%;
+    height: fit-content;
     margin: 24px auto;
     @include regularGridResponsive(260px, 24px);
 
@@ -125,5 +128,22 @@
 
   &__sides {
     overflow-y: scroll;
+  }
+
+
+  @media (max-width: $breakpoint3) {
+
+    &__right {
+      width: 100%;
+      background: var(--white);
+    }
+
+    &__sides {
+      display: none;
+
+      &.active {
+        display: flex;
+      }
+    }
   }
 }

@@ -1,9 +1,15 @@
 @import "mixins";
+@import "constants";
 
 .header {
   height: var(--header-height);
   width: 100%;
+  position: relative;
   @include flexRow;
+
+  &.mobile {
+    display: none;
+  }
 
   &__left {
     flex: 1;
@@ -22,5 +28,88 @@
   &__side_label {
     font-weight: 600;
     @include font-24px
+  }
+  
+  @media (max-width: $breakpoint3) {
+    border-bottom: 1px solid var(--light-gray);
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 50%;
+      width: 100%;
+      background: var(--light-gray);
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 1px;
+      left: 0;
+      height: 50%;
+      width: 100%;
+      background: var(--white);
+    }
+
+    &.feedback {
+      &:before {
+        top: unset;
+        bottom: 1px;
+        left: 0;
+      }
+
+      &:after {
+        top: 0;
+        bottom: unset;
+        left: 0;
+      }
+    }
+
+    &.desktop {
+      display: none;
+    }
+
+    &.mobile {
+      display: flex;
+    }
+
+    &__sides {
+      flex: 1;
+    }
+
+    &__left {
+      border: none;
+    }
+
+    &__right {
+      width: unset;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+      background: var(--light-gray);
+      border-radius: 16px;
+      @include transitions;
+      //line-height: 100px;
+
+      &:not(.active) {
+        &:hover {
+          color: var(--light-blue-hover);
+          text-decoration: underline;
+          text-decoration-style: dashed;
+          text-decoration-thickness: 1px;
+          text-underline-offset: 2px;
+        }
+      }
+
+      &.active  {
+        background: var(--white);
+      }
+    }
   }
 }

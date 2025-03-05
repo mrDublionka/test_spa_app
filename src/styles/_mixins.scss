@@ -250,3 +250,39 @@
   }
 }
 
+//BUTTON
+
+@mixin secondaryBtn {
+  background: var(--light-gray2);
+
+  &:disabled {
+    color: var(--gray-text-color);
+  }
+
+  &:hover {
+    background: var(--light-gray-hover);
+    color: var(--light-blue-hover);
+  }
+
+  &:focus-visible {
+    border: 2px solid var(--light-blue);
+  }
+}
+
+@mixin primaryBtn {
+  background: var(--white);
+
+  &:disabled {
+    color: var(--gray-text-color);
+  }
+
+  &:hover {
+    background: var(--light-gray-hover1);
+    color: var(--light-blue-hover);
+  }
+
+  &:focus-visible {
+    border: 2px solid var(--light-blue);
+  }
+}
+

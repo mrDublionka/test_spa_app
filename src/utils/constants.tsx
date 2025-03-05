@@ -24,6 +24,23 @@ export const strings = {
     interstellar_gray: 'Interstellar Grey',
 }
 
+export const bp = {
+    breakpoint1: 1440,
+    breakpoint2: 1150,
+    breakpoint3: 830,
+    breakpoint4: 630,
+    breakpoint5: 450,
+    breakpoint6: 380,
+    breakpoint_secondary1: 955,
+    breakpoint_secondary2: 700,
+    wider_breakpoint: 1900,
+    wide_breakpoint: 1800,
+    wide_breakpoint1: 1640,
+    wide_breakpoint2: 1400,
+    wide_breakpoint3: 1540,
+    vertical_breakpoint1: 700,
+}
+
 
 export const grid_data:GridData[] = [
     {

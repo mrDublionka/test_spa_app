@@ -1,38 +1,38 @@
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import st from "@/styles/Form.module.scss";
-import { strings } from "@/utils/constants.tsx";
+import {bp, strings} from "@/utils/constants.tsx";
 import Button from "@/components/ui/Button.tsx";
 import clsx from "clsx";
 
-const schema = yup.object().shape({
-    name: yup.string().required("Name is required"),
-    tel: yup
-        .string()
-        .matches(/^\+?\d{7,15}$/, "Invalid phone number")
-        .required("Phone number is required"),
-    email: yup.string().email("Invalid email").required("Email is required"),
-    message: yup.string().required("Message cannot be empty"),
+const schema = z.object({
+    name: z.string().min(1, "Name is required"),
+    tel: z.string().min(1, "Phone is required"),
+    email: z.string().min(1, "Email is required"),
+    message: z.string().min(1, "Message cannot be empty"),
 });
 
 const FeedbackForm = () => {
     const {
         register,
         handleSubmit,
-        trigger,
-        formState: { errors, isValid },
+        setError,
+        formState: { errors, isValid, isSubmitted },
     } = useForm({
-        resolver: yupResolver(schema),
-        mode: "onChange",
-        reValidateMode: "onSubmit",
+        resolver: zodResolver(schema),
+        mode: "onSubmit",
     });
 
-    const onSubmit = async (data: any) => {
-        const isValidTel = await trigger("tel");
-        const isValidEmail = await trigger("email");
+    const onSubmit = (data: any) => {
+        if (!/^\+?[0-9]+$/.test(data.tel)) {
+            setError("tel", { type: "manual", message: "Only numbers and '+' are allowed" });
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+            setError("email", { type: "manual", message: "Invalid email format" });
+        }
 
-        if (isValidTel && isValidEmail) {
+        if (!errors.tel && !errors.email) {
             console.log("Form submitted:", data);
         }
     };
@@ -42,19 +42,26 @@ const FeedbackForm = () => {
             <div className={clsx(st.form__item, errors.name && st.err)}>
                 <label htmlFor="name">{strings.name}</label>
                 <input autoComplete="name" {...register("name")} />
-                {errors.name && <p className={st.error}>{errors.name.message}</p>}
+                {isSubmitted && errors.name && <p className={st.error}>{errors.name.message}</p>}
             </div>
 
             <div className={clsx(st.form__item, errors.tel && st.err)}>
                 <label htmlFor="tel">{strings.phone_number}</label>
-                <input autoComplete="tel" {...register("tel")} />
-                {errors.tel && <p className={st.error}>{errors.tel.message}</p>}
+                <input
+                    autoComplete="tel"
+                    {...register("tel")}
+                    maxLength={14}
+                    onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        e.target.value = e.target.value.replace(/[^0-9+]/g, "").slice(0, 14);
+                    }}
+                />
+                {isSubmitted && errors.tel && <p className={st.error}>{errors.tel.message}</p>}
             </div>
 
             <div className={clsx(st.form__item, errors.email && st.err)}>
                 <label htmlFor="email">{strings.email}</label>
-                <input autoComplete="email" type="email" {...register("email")} />
-                {errors.email && <p className={st.error}>{errors.email.message}</p>}
+                <input autoComplete="email" type="text" {...register("email")} />
+                {isSubmitted && errors.email && <p className={st.error}>{errors.email.message}</p>}
             </div>
 
             <div className={clsx(st.form__item, errors.message && st.err)}>
@@ -68,10 +75,14 @@ const FeedbackForm = () => {
                         target.style.height = `${target.scrollHeight}px`;
                     }}
                 />
-                {errors.message && <p className={st.error}>{errors.message.message}</p>}
+                {isSubmitted && errors.message && <p className={st.error}>{errors.message.message}</p>}
             </div>
 
-            <Button variant="primary" type="submit" disabled={!isValid}>
+            <Button
+                className={st.submit}
+                variant={window.innerWidth < bp.breakpoint3 ? "secondary" : "primary" }
+                type="submit" disabled={!isValid}
+            >
                 {strings.submit}
             </Button>
         </form>

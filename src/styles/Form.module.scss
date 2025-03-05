@@ -1,8 +1,10 @@
+@import "constants";
 @import "mixins";
 
 .form {
   padding: 24px;
   gap: 28px;
+  width: 100%;
   @include flexColumn;
 
   &__item {
@@ -25,6 +27,11 @@
       resize: none;
     }
 
+    .error {
+      color: var(--danger);
+      @include font-12px;
+    }
+
     input, textarea {
       border: none;
       border-bottom: 1px solid var(--light-gray1);
@@ -39,4 +46,5 @@
       }
     }
   }
+
 }
