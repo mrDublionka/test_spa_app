@@ -48,6 +48,7 @@ const FeedbackForm = () => {
             <div className={clsx(st.form__item, errors.tel && st.err)}>
                 <label htmlFor="tel">{strings.phone_number}</label>
                 <input
+                    type={'tel'}
                     autoComplete="tel"
                     {...register("tel")}
                     maxLength={14}
